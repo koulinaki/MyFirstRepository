@@ -1,0 +1,50 @@
+an to response einai null or not:
+
+
+if(response != null){
+	//Parse the response and also set it as a string for later on
+def json = new JsonSlurper().parseText(response)
+def jsonFormat = (response).toString()
+
+
+//grab the test case property value for contract id
+def contractId = messageExchange.modelItem.testStep.testCase.getPropertyValue("contractId")
+......
+
+}
+else if (response == null){
+	log.error "There are no bookings"
+}
+
+
+
+Validates that all ids are integers:
+
+//Validates that all ids are integers
+for(int i = 0; i < Ids.size; i++){
+	assert Ids[i].class == Integer
+
+
+//Validates that all invoiceByBookings are either booleans or null
+for(int i = 0; i < invoiceByBookings.size; i++){
+	assert(invoiceByBookings[i] == null || invoiceByBookings[i].class == Boolean)
+
+//This is to find if the ids of the clawback are integer
+if(clawbacks != null){
+	//Validates that all clawback ids are integers
+	for(int i = 0; i < clawbackIds.size; i++){
+		for(int j = 0; j < clawbackIds[i].size; j++){
+			assert clawbackIds[i][j].class == Integer
+		}
+	}
+
+
+//Validates that all payment percents are either null or a BigDecimal
+for(int i = 0; i < paymentPercents.size; i++){
+	assert (paymentPercents[i] == null || paymentPercents[i].class == BigDecimal)
+
+//print the pososto of how beautiful karolina is
+log.info "Karolina is"+pososto+"omorfh"
+
+
+
